@@ -94,6 +94,10 @@
         margin: 0px 0px 10px 10px;
       }
 
+      .invisible {
+        visibility: hidden;
+      }
+
     </style>
   </head>
   <body>
@@ -123,7 +127,7 @@
     </div>
     
     <!-- IMAGES -->
-    <ul id="container" class="reset left"></ul>
+    <ul id="container" class="reset left invisible"></ul>
     
 
     <script>
@@ -180,6 +184,8 @@
         for (var i = 0; i < images.length; ++i ) {
           console.log(images[i].offsetWidth + " - " + FLICKR.viewport);
         }
+
+        document.getElementById("container").style.visibility = "visible";  // makes photo stream visible
       };
     </script>
   </body>
