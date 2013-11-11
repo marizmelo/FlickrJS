@@ -14,7 +14,7 @@
         font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
         font-size: 14px;
         background-size: 100% 60px;
-        padding-top: 112px;
+        padding-top: 115px;
         -webkit-font-smoothing: antialiased;
       }
       ul.reset{
@@ -83,14 +83,17 @@
 
       #flickr_logo{
         height: 30px;
-        margin-top: -2px;
+      }
+
+      #container{
+        /* maintain space on images on the right-hand side of the page */
+        padding-right: 10px; 
       }
 
       #container img{
         margin: 0px 0px 10px 10px;
       }
 
-      
     </style>
   </head>
   <body>
@@ -120,7 +123,7 @@
     </div>
     
     <!-- IMAGES -->
-    <div id="container"></div>
+    <ul id="container" class="reset left"></ul>
     
 
     <script>
@@ -160,14 +163,14 @@
         img.style.height = "280px";
         container.appendChild(img);*/
         //OR
-        container.innerHTML += "<img src='images/"+ FLICKR.data[i].image +"' height=300>";
+        container.innerHTML += "<li><img src='images/"+ FLICKR.data[i].image +"' height=300></li>";
       }
 
       window.onscroll = function () {
-        console.log(document.body.scrollTop);
+        //console.log(document.body.scrollTop);
       };
 
-      (function () {
+      window.onload = function () {
         var container = document.getElementById("container");
         //var images = container.match(/src/g); // get all images inside container
         //var images = container.getElementsByTagName("img");
@@ -175,9 +178,9 @@
         var images = container.getElementsByTagName("img");
       
         for (var i = 0; i < images.length; ++i ) {
-          console.log(images[i].attributes[0].nodeValue);
+          console.log(images[i].offsetWidth + " - " + FLICKR.viewport);
         }
-      }());
+      };
     </script>
   </body>
 </html>
