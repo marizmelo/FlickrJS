@@ -1,0 +1,179 @@
+<!doctype>
+<html>
+  <head>
+    <title>Flickr Light</title>
+    <!-- Flickr favicon file -->
+    <link rel="shortcut icon" href="http://l.yimg.com/g/favicon.ico">
+    <!-- Stylesheet -->
+    <style>
+      html, body{
+        margin: 0;
+        padding: 0;
+      }
+      body{
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 14px;
+        background-size: 100% 60px;
+        padding-top: 102px;
+        -webkit-font-smoothing: antialiased;
+      }
+      ul.reset{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul.reset.left li{
+        float: left;
+      }
+
+      #flickr_toolbar{
+        position: fixed;
+        width: 100%;
+        top: 0px;
+      }
+      #flickr_toolbar a{
+        text-decoration: none;
+        color: white;
+      }
+      #flickr_toolbar a:hover{
+        text-decoration: underline;
+      }
+
+      #flickr_options{
+        min-width: 960px;
+        background: #500095;
+        padding: 5px 10px;
+        overflow: auto;
+        font-size: 12px;
+      }
+      #flickr_options li{
+        padding-right: 32px;
+      }
+
+      #flickr_icon{
+        background-image: url("http://l.yimg.com/rz/l/yahoo_en-US_b_w_26x14_2x.png");
+        background-size: 23px 13px;
+        width: 23px;
+        height: 13px;
+        display: block;
+      }
+
+      #flickr_menu{
+        background: white;
+        padding: 25px 15px;
+        overflow: auto;
+        font-size: 110%;
+        border-bottom: 1px solid #ddd;
+        opacity: .8;
+      }
+      #flickr_menu li{
+        margin-right: 20px;
+      }
+      #flickr_menu li.right{
+        float: right;
+      }
+      #flickr_menu a{
+        color: black;
+        font-weight: 400;
+      }
+      #flickr_menu a:hover, #flickr_menu a.selected{
+        text-decoration: none;
+        color: #ff0084;
+      }
+
+      #flickr_logo{
+        height: 30px;
+        margin-top: -2px;
+      }
+
+      
+    </style>
+  </head>
+  <body>
+
+    <!-- FLICKR Toolbar -->
+    <div id="flickr_toolbar">
+      <ul id="flickr_options" class="reset left">
+        <li><span id="flickr_icon" class="block"></span></li>
+        <li><a href="#">Mail</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Sports</a></li>
+        <li><a href="#">Finance</a></li>
+        <li><a href="#">Weather</a></li>
+        <li><a href="#">Games</a></li>
+        <li><a href="#">Groups</a></li>
+        <li><a href="#">Answers</a></li>
+        <li><a href="#">Screen</a></li>
+        <li><a href="#">Flickr</a></li>
+        <li><a href="#">Mobile</a></li>
+        <li><a href="#">More</a></li>
+      </ul>
+
+      <!-- FLICKR Menu -->
+      <ul id="flickr_menu" class="reset left">
+        <li><img id="flickr_logo" src="logo.png"></li>
+      </ul>
+    </div>
+    
+    <!-- IMAGES -->
+    <div id="container"></div>
+    
+
+    <script>
+      var FLICKR = {
+        viewport : (function () {
+          return window.innerWidth; 
+        }()),
+        data : [
+          {image : "jpeg.jpg"},
+          {image : "jpeg-1.jpg"},
+          {image : "jpeg-2.jpg"},
+          {image : "jpeg-3.jpg"},
+          {image : "jpeg-4.jpg"},
+          {image : "jpeg-5.jpg"},
+          {image : "jpeg-6.jpg"},
+          {image : "jpeg-7.jpg"},
+          {image : "jpeg-8.jpg"},
+          {image : "jpeg-9.jpg"},
+          {image : "jpeg.jpg"},
+          {image : "jpeg-1.jpg"},
+          {image : "jpeg-2.jpg"},
+          {image : "jpeg-3.jpg"},
+          {image : "jpeg-4.jpg"},
+          {image : "jpeg-5.jpg"},
+          {image : "jpeg-6.jpg"},
+          {image : "jpeg-7.jpg"},
+          {image : "jpeg-8.jpg"},
+          {image : "jpeg-9.jpg"}
+        ]
+      };
+
+      var container = document.getElementById("container");
+
+      for(var i = 0; i < FLICKR.data.length; ++i) {
+        /*var img = document.createElement("img");
+        img.src = FLICKR.data[i].image;
+        img.style.height = "280px";
+        container.appendChild(img);*/
+        //OR
+        container.innerHTML += "<img src='"+ FLICKR.data[i].image +"' height=300>";
+      }
+
+      window.onscroll = function () {
+        console.log(document.body.scrollTop);
+      };
+
+      (function () {
+        var container = document.getElementById("container");
+        //var images = container.match(/src/g); // get all images inside container
+        //var images = container.getElementsByTagName("img");
+        //var images = document.getElementById("container").childNodes;
+        var images = container.getElementsByTagName("img");
+      
+        for (var i = 0; i < images.length; ++i ) {
+          console.log(images[i].attributes[0].nodeValue);
+        }
+      }());
+    </script>
+  </body>
+</html>
